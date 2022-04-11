@@ -5,7 +5,7 @@ class Form extends Component {
     return (
       <div>
         <form>
-
+          <h2>Adcionar Nova Carta</h2>
           <label htmlFor="nome">
             Nome
             <input type="text" name="nome" data-testid="name-input" />
@@ -53,7 +53,6 @@ class Form extends Component {
           <button type="button" data-testid="save-button">
             Salvar
           </button>
-
         </form>
       </div>
     );
