@@ -15,19 +15,38 @@ class App extends Component {
       cardRare: '',
       cardTrunfo: false,
       // hasTrunfo: false,
-      isSaveButtonDisabled: true,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
   }
 
   onInputChange({ target }) {
-    console.log(target);
     const { name, type, checked, value } = target;
     const result = (type === 'checkbox') ? checked : value;
     this.setState(
       () => ({ [name]: result }),
     );
+  }
+
+  validateBtn() {
+    const { cardName, cardDescription, cardRare, cardImage,
+      cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const limitNum = 90;
+    const limitSum = 210;
+    const sum = +cardAttr1 + +cardAttr2 + +cardAttr3;
+    const attr1 = !cardAttr1 || cardAttr1 < 0 || cardAttr1 > limitNum;
+    const attr2 = !cardAttr2 || cardAttr2 < 0 || cardAttr2 > limitNum;
+    const attr3 = !cardAttr3 || cardAttr3 < 0 || cardAttr3 > limitNum;
+    if (!cardName || !cardDescription || !cardRare || !cardImage) {
+      return true;
+    }
+    if (attr1 || attr2 || attr3) {
+      return true;
+    }
+    if (sum > limitSum) {
+      return true;
+    }
+    return false;
   }
 
   render() {
@@ -40,7 +59,6 @@ class App extends Component {
       cardRare,
       cardTrunfo,
       // hasTrunfo,
-      isSaveButtonDisabled,
     } = this.state;
     return (
       <div>
@@ -55,7 +73,7 @@ class App extends Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           // hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
+          isSaveButtonDisabled={ this.validateBtn() }
           onInputChange={ this.onInputChange }
         />
         <Card
