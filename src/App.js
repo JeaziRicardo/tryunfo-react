@@ -14,7 +14,7 @@ class App extends Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       cards: [],
     };
 
@@ -39,7 +39,7 @@ class App extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
     } = this.state;
     const card = {
       cardName,
@@ -50,7 +50,7 @@ class App extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
+      hasTrunfo,
     };
     this.setState((prev) => ({
       cardName: '',
@@ -61,7 +61,7 @@ class App extends Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      // hasTrunfo: false,
+      hasTrunfo: false,
       cards: [...prev.cards, card],
     }));
   }
@@ -87,6 +87,11 @@ class App extends Component {
     return false;
   }
 
+  trunfo() {
+    const { cards } = this.state;
+    cards.some((card) => card.hasTrunfo);
+  }
+
   render() {
     const { cardName,
       cardDescription,
@@ -110,7 +115,7 @@ class App extends Component {
           cardImage={ cardImage }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
-          // hasTrunfo={ hasTrunfo }
+          hasTrunfo={ this.trunfo() }
           isSaveButtonDisabled={ this.validateBtn() }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
