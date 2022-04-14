@@ -4,7 +4,7 @@ import Card from './Card';
 
 class CardList extends Component {
   render() {
-    const { cards } = this.props;
+    const { cards, clearButton } = this.props;
     return (
       <div>
         <h2>Todas as Cartas</h2>
@@ -32,7 +32,12 @@ class CardList extends Component {
                 cardRare={ cardRare }
                 cardTrunfo={ cardTrunfo }
               />
-              <button type="button">Excluir</button>
+              <button
+                onClick={ clearButton }
+                type="button"
+              >
+                Excluir
+              </button>
             </div>
           ))
         }
@@ -43,6 +48,7 @@ class CardList extends Component {
 
 CardList.propTypes = {
   cards: PropTypes.arrayOf(Object).isRequired,
+  clearButton: PropTypes.func.isRequired,
 };
 
 export default CardList;
