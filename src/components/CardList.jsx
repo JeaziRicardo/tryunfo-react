@@ -7,6 +7,7 @@ class CardList extends Component {
     const { cards } = this.props;
     return (
       <div>
+        <h1>Todas as Cartas</h1>
         {
           cards.map((
             {
