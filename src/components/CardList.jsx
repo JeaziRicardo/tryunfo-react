@@ -33,6 +33,8 @@ class CardList extends Component {
                 cardTrunfo={ cardTrunfo }
               />
               <button
+                name={ cardName }
+                data-testid="delete-button"
                 onClick={ clearButton }
                 type="button"
               >

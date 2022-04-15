@@ -24,14 +24,13 @@ class App extends Component {
 
   onInputChange({ target }) {
     const { name, type, checked, value } = target;
-    const result = (type === 'checkbox') ? checked : value;
-    this.setState(
-      () => ({ [name]: result }),
-    );
+    const result = type === 'checkbox' ? checked : value;
+    this.setState(() => ({ [name]: result }));
   }
 
   onSaveButtonClick() {
-    const { cardName,
+    const {
+      cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
@@ -64,8 +63,15 @@ class App extends Component {
   }
 
   validateBtn() {
-    const { cardName, cardDescription, cardRare, cardImage,
-      cardAttr1, cardAttr2, cardAttr3 } = this.state;
+    const {
+      cardName,
+      cardDescription,
+      cardRare,
+      cardImage,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+    } = this.state;
     const limitNum = 90;
     const limitSum = 210;
     const sum = +cardAttr1 + +cardAttr2 + +cardAttr3;
@@ -90,7 +96,8 @@ class App extends Component {
   }
 
   render() {
-    const { cardName,
+    const {
+      cardName,
       cardDescription,
       cardAttr1,
       cardAttr2,
