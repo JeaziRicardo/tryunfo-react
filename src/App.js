@@ -20,6 +20,7 @@ class App extends Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   onInputChange({ target }) {
@@ -95,6 +96,13 @@ class App extends Component {
     return cards.some((card) => card.cardTrunfo);
   }
 
+  deleteCard({ target }) {
+    const { name } = target;
+    this.setState((prev) => ({
+      cards: prev.cards.filter(({ cardName }) => name !== cardName),
+    }));
+  }
+
   render() {
     const {
       cardName,
@@ -134,7 +142,10 @@ class App extends Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        <CardList cards={ cards } />
+        <CardList
+          cards={ cards }
+          clearButton={ this.deleteCard }
+        />
       </div>
     );
   }
