@@ -4,10 +4,21 @@ import Card from './Card';
 
 class CardList extends Component {
   render() {
-    const { cards, clearButton } = this.props;
+    const { cards, clearButton, nameFilter } = this.props;
     return (
       <div>
         <h2>Todas as Cartas</h2>
+
+        <label htmlFor="filter-name">
+          Filtrar por nome
+          <input
+            type="text"
+            data-testid="name-filter"
+            name="filter-name"
+            onChange={ nameFilter }
+          />
+        </label>
+
         {
           cards.map((
             {
@@ -51,6 +62,7 @@ class CardList extends Component {
 CardList.propTypes = {
   cards: PropTypes.arrayOf(Object).isRequired,
   clearButton: PropTypes.func.isRequired,
+  nameFilter: PropTypes.func.isRequired,
 };
 
 export default CardList;
