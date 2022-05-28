@@ -4,7 +4,7 @@ import Card from './Card';
 
 class CardList extends Component {
   render() {
-    const { cards, clearButton, nameFilter } = this.props;
+    const { cards, clearButton, nameFilter, rareFilter } = this.props;
     return (
       <div>
         <h2>Todas as Cartas</h2>
@@ -24,11 +24,12 @@ class CardList extends Component {
           <select
             name="filter-rarity"
             data-testid="rare-filter"
+            onChange={ rareFilter }
           >
-            <option value="todas">todas</option>
-            <option value="normal">normal</option>
-            <option value="raro">raro</option>
-            <option value="muito raro">muito raro</option>
+            <option value="todas">Todas</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
           </select>
         </label>
 
@@ -76,6 +77,7 @@ CardList.propTypes = {
   cards: PropTypes.arrayOf(Object).isRequired,
   clearButton: PropTypes.func.isRequired,
   nameFilter: PropTypes.func.isRequired,
+  rareFilter: PropTypes.func.isRequired,
 };
 
 export default CardList;

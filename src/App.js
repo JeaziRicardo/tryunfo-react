@@ -64,6 +64,18 @@ class App extends Component {
     }));
   }
 
+  rareFilter = ({ target }) => {
+    const { value } = target;
+    if (value !== 'todas') {
+      this.setState((prev) => ({
+        cards: prev.cards.filter(({ cardRare }) => cardRare === value),
+      }));
+    }
+    this.setState((prev) => ({
+      cards: prev.cards,
+    }));
+  };
+
   validateBtn() {
     const {
       cardName,
@@ -155,6 +167,7 @@ class App extends Component {
           cards={ cards }
           clearButton={ this.deleteCard }
           nameFilter={ this.nameFilter }
+          rareFilter={ this.rareFilter }
         />
       </div>
     );
