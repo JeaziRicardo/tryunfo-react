@@ -21,6 +21,7 @@ class App extends Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.deleteCard = this.deleteCard.bind(this);
+    this.nameFilter = this.nameFilter.bind(this);
   }
 
   onInputChange({ target }) {
@@ -103,6 +104,14 @@ class App extends Component {
     }));
   }
 
+  nameFilter({ target }) {
+    const { value } = target;
+    this.setState((prev) => ({
+      cards: prev.cards
+        .filter(({ cardName }) => cardName.includes(value)),
+    }));
+  }
+
   render() {
     const {
       cardName,
@@ -145,6 +154,7 @@ class App extends Component {
         <CardList
           cards={ cards }
           clearButton={ this.deleteCard }
+          nameFilter={ this.nameFilter }
         />
       </div>
     );

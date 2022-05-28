@@ -19,6 +19,19 @@ class CardList extends Component {
           />
         </label>
 
+        <label htmlFor="filter-rarity">
+          Filtrar por raridade
+          <select
+            name="filter-rarity"
+            data-testid="rare-filter"
+          >
+            <option value="todas">todas</option>
+            <option value="normal">normal</option>
+            <option value="raro">raro</option>
+            <option value="muito raro">muito raro</option>
+          </select>
+        </label>
+
         {
           cards.map((
             {
