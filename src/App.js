@@ -76,6 +76,15 @@ class App extends Component {
     }));
   };
 
+  trunFilter = ({ target }) => {
+    const { type } = target;
+    if (type === 'checkbox') {
+      this.setState((prev) => ({
+        cards: prev.cards.filter(({ cardTrunfo }) => cardTrunfo === true),
+      }));
+    }
+  };
+
   validateBtn() {
     const {
       cardName,
@@ -168,6 +177,7 @@ class App extends Component {
           clearButton={ this.deleteCard }
           nameFilter={ this.nameFilter }
           rareFilter={ this.rareFilter }
+          trunFilter={ this.trunFilter }
         />
       </div>
     );

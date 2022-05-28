@@ -4,7 +4,7 @@ import Card from './Card';
 
 class CardList extends Component {
   render() {
-    const { cards, clearButton, nameFilter, rareFilter } = this.props;
+    const { cards, clearButton, nameFilter, rareFilter, trunFilter } = this.props;
     return (
       <div>
         <h2>Todas as Cartas</h2>
@@ -31,6 +31,16 @@ class CardList extends Component {
             <option value="raro">Raro</option>
             <option value="muito raro">Muito raro</option>
           </select>
+        </label>
+
+        <label htmlFor="filter-trunfo">
+          Super Trunfo
+          <input
+            type="checkbox"
+            name="filter-trunfo"
+            data-testid="trunfo-filter"
+            onChange={ trunFilter }
+          />
         </label>
 
         {
@@ -78,6 +88,7 @@ CardList.propTypes = {
   clearButton: PropTypes.func.isRequired,
   nameFilter: PropTypes.func.isRequired,
   rareFilter: PropTypes.func.isRequired,
+  trunFilter: PropTypes.func.isRequired,
 };
 
 export default CardList;
